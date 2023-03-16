@@ -37,6 +37,13 @@
 <h2>Bài 9: Kiểm tra xem 3 số thực (a,b,c) nhập vào có phải là cạnh của một tam giác</h2>
 <button onclick="triangleCheck()">Click để bắt đầu bài 9</button>
 
+<h2>Bài 11: Viết chương trình tính thuế thu nhập cá nhân</h2>
+<button onclick="taxCalc()">Bấm để bắt đầu bài 11</button>
+
+<h2>Bài 12: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lại con)
+    khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.</h2>
+<button onclick="compoundInterest()">Bấm để bắt đầu bài 12</button>
+
 </body>
 </html>
 <script>
@@ -140,23 +147,39 @@
             alert("Các cạnh vừa nhập là tam giác.")
         }
     }
+
+    // Bài 11
+    function taxCalc() {
+        let income = +prompt("Nhập mức thu nhập phải chịu thuế (đơn vị: VNĐ): ")
+        if (isNaN(income) || income < 0) {
+            alert("Sai dữ liệu, vui lòng nhập lại!")
+        } else if (income <= 5000000) {
+            alert(`Mức thuế cần đóng là ${(income * 5 / 100).toLocaleString()} VNĐ`)
+        } else if (income > 5000000 && income <= 10000000) {
+            alert(`Mức thuế cần đóng là ${((income - 5000000) * 10 / 100 + 250000).toLocaleString()} VNĐ`)
+        } else if (income > 10000000 && income <= 18000000) {
+            alert(`Mức thuế cần đóng là ${((income - 10000000) * 15 / 100 + 750000).toLocaleString()} VNĐ`)
+        } else if (income > 18000000 && income <= 32000000) {
+            alert(`Mức thuế cần đóng là ${((income - 18000000) * 20 / 100 + 1650000).toLocaleString()} VNĐ`)
+        } else if (income > 32000000 && income <= 52000000) {
+            alert(`Mức thuế cần đóng là ${((income - 32000000) * 25 / 100 + 3250000).toLocaleString()} VNĐ`)
+        } else if (income > 52000000 && income <= 80000000) {
+            alert(`Mức thuế cần đóng là ${((income - 52000000) * 30 / 100 + 5850000).toLocaleString()} VNĐ`)
+        } else if (income > 80000000) {
+            alert(`Mức thuế cần đóng là ${((income - 80000000) * 35 / 100 + 9850000).toLocaleString()} VNĐ`)
+        }
+    }
+
+    // Bài 12
+    function compoundInterest() {
+        let lend = +prompt("Nhập số tiền muốn vay: ").toLocaleString();
+        let month = +prompt("Nhập số tháng vay: ");
+        let interestRate = +prompt("Nhập lãi suất tổng khoảng thời gian vay theo %:")
+        let avgInterest = interestRate / month / 100;
+        let total = lend;
+        for (let i = 0; i < month; i++) {
+            total *= (1 + avgInterest);
+        }
+        document.write(`Tổng số tiền cần phải tra sau khi vay ` + lend.toLocaleString() + ` ; thời hạn ${month} tháng với lãi suất ${interestRate} là: ` + total.toLocaleString());
+    }
 </script>
-
-<!--Bài 1: Chuyển từ độ C sang độ F. °C  x  9/5 + 32 = °F-->
-<!--Bài 2: Chuyển từ mét sang feet: ft =m * 3.2808-->
-<!--Bài 3: Tính diện tích hình vuông khi biết cạnh a.-->
-<!--Bài 4: Tính diện tích hình  chữ nhật khi biết 02 cạnh a, b.-->
-<!--Bài 5: Tính diện tích tam giác vuông khi biết 02 cạnh kề a, b.-->
-<!--Bài 6: Giải phương trình bậc 1.-->
-<!--Bài 7: Giải phương trình bậc 2.-->
-<!--Bài 8: Kiểm tra xem một số nhập vào có phải là tuổi của một người không. Một số nguyên là tuổi của một người khi nhỏ 120 và lơn hơn 0.-->
-<!--Bài 9: Kiểm tra xem 3 số thực (a,b,c) nhập vào có phải là cạnh của một tam giác. Điều kiện để a,b,c là cạnh của một tam giác là:-->
-<!--a,b,c > 0-->
-<!--a + b > c-->
-<!--b + c > a-->
-<!--a + c > b-->
-
-<!--Bài 10: Viết chương trình tính giá điện.-->
-<!--Bài 11: Viết chương trình tính thuế thu nhập cá nhân.-->
-<!--Bài 12: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.-->
-<!--Để hoàn thành bài thực hành, học viên cần:-->

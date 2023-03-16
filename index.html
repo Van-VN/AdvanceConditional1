@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<h2>Bài 1: Chuyển từ độ C sang độ F. °C x 9/5 + 32 = °F</h2>
+<button onclick="cToF()">Click để bắt đầu bài 1</button>
+
+<h2>Bài 2: Chuyển từ mét sang feet: ft =m * 3.2808</h2>
+<button onclick="mToF()">Click để bắt đầu bài 2</button>
+
+<h2>Bài 3: Tính diện tích hình vuông khi biết cạnh a.</h2>
+<button onclick="sqrArea()">Click để bắt đầu bài 3</button>
+
+<h2>Bài 4: Tính diện tích hình chữ nhật khi biết 02 cạnh a, b</h2>
+<button onclick="rectArea()">Click để bắt đầu bài 4</button>
+
+<h2>Bài 5: Tính diện tích tam giác vuông khi biết 02 cạnh kề a, b</h2>
+<button onclick="triangleArea()">Click để bắt đầu bài 5</button>
+
+<h2>Bài 6: Giải phương trình bậc 1: ax + b = 0</h2>
+<button onclick="solve1()">Click để bắt đầu bài 6</button>
+
+<h2>Bài 7: Giải phương trình bậc 2: ax<sup>2</sup> + bx + c = 0</h2>
+<button onclick="solve2()">Click để bắt đầu bài 7</button>
+
+<h2>Bài 8: Kiểm tra xem một số nhập vào có phải là tuổi của một người không. Một số nguyên là tuổi của một người khi nhỏ
+    120 và lơn hơn 0</h2>
+<button onclick="ageCheck()">Click để bắt đầu bài 8</button>
+
+<h2>Bài 9: Kiểm tra xem 3 số thực (a,b,c) nhập vào có phải là cạnh của một tam giác</h2>
+<button onclick="triangleCheck()">Click để bắt đầu bài 9</button>
+
+</body>
+</html>
+<script>
+    // Bài 1
+    function cToF() {
+        let degreeC = +prompt("Nhập vào nhiệt độ C muốn chuyển đổi sang F : ")
+        if (isNaN(degreeC)) {
+            alert("Nhập nhiệt độ bằng số!")
+        }
+        alert("Nhiệt độ F là: " + (degreeC * 9 / 5 + 32))
+    }
+
+    // Bài 2
+    function mToF() {
+        let mLength = +prompt("Nhập số Meter muốn chuyển đổi sang Feet: ")
+        if (isNaN(mLength) || mLength < 0) {
+            alert("Dữ liệu nhập sai.")
+        }
+        alert(mLength + " mét chuyển sang Feet là: " + mLength * 3.2808);
+    }
+
+    // Bài 3
+    function sqrArea() {
+        let sqrLen = +prompt("Nhập chiều dài cạnh hình vuông: ")
+        if (isNaN(sqrLen) || sqrLen < 0) {
+            alert("Dữ liệu nhập sai, vui lòng nhập lại dữ liệu.")
+        }
+        alert("Diện tích hình vuông với chiều dài " + sqrLen + " là: " + sqrLen ** 2);
+    }
+
+    // Bài 4
+    function rectArea() {
+        let rectWid = +prompt("Nhập chiều rộng hình chữ nhật: ")
+        let rectLen = +prompt("Nhập chiều dài hình chữ nhật: ")
+        if (isNaN(rectWid) || isNaN(rectLen) || rectWid < 0 || rectLen < 0) {
+            alert("Dữ liệu nhập sai, vui lòng nhập lại dữ liệu");
+        }
+        alert(`Diện tích hình chữ nhật với chiều rộng ${rectWid} và chiều dài ${rectLen} là: ${rectWid * rectLen}`);
+    }
+
+    // Bài 5
+    function triangleArea() {
+        let triangleWid = +prompt("Nhập chiều dài cạnh kề a tam giác: ")
+        let triangleLen = +prompt("Nhập chiều dài cạnh kề b tam giác: ")
+        if (isNaN(triangleWid) || isNaN(triangleLen) || triangleWid < 0 || triangleLen < 0) {
+            alert("Dữ liệu nhập sai, vui lòng nhập lại dữ liệu");
+        }
+        alert(`Diện tích tam giác vuông với 2 cạnh ${triangleLen} và ${triangleWid} là: ${triangleLen * triangleWid / 2}`);
+    }
+
+    // Bài 6
+    function solve1() {
+        let a = +prompt("Nhập số a ≠ 0: ");
+        let b = +prompt("Nhập số b: ");
+        if (isNaN(a) || isNaN(b) || a === 0) {
+            alert("Dữ liệu nhập vào sai, vui lòng nhập lại.")
+        }
+        alert(`Giá trị x trong phương trình ax + b = 0 với a = ${a} và b = ${b} là: "x = ${(-b) / a}"`)
+    }
+
+    // Bài 7
+    function solve2() {
+        let a = +prompt("Nhập số a: ");
+        let b = +prompt("Nhập số b: ");
+        let c = +prompt("Nhập số c: ");
+        let delta = b ** 2 - 4 * a * c;
+        if (a === 0 || isNaN(a) || isNaN(b) || isNaN(c)) {
+            alert("Dữ liệu nhập không chính xác !");
+        } else {
+            if (delta < 0) {
+                alert("Phương trình vô nghiệm");
+            } else if (delta > 0) {
+                let firstAns = (-b + Math.sqrt(delta) / 2 * a);
+                let secondAns = (-b - Math.sqrt(delta) / 2 * a);
+                alert(`Phương trình có hai kết quả x1 = ${firstAns} và x2 = ${secondAns}`);
+            } else if (delta === 0) {
+                let thirdAns = -b / 2 * a;
+                alert(`Phương trình có hai nghiệm kép x1 = x2 = ${thirdAns}`);
+            }
+        }
+    }
+
+    // Bài 8
+    function ageCheck() {
+        let age = +prompt("Vui lòng nhập số tuổi: ");
+        if (isNaN(age) || age < 0 || age % 1 !== 0 || age > 120) {
+            alert("Đây không phải là số tuổi của một người.")
+        } else {
+            alert(`Số đã nhập ${age} là tuổi của một người.`)
+        }
+    }
+
+    // Bài 9
+    function triangleCheck() {
+        let a = +prompt("Nhập chiều dài cạnh a: ")
+        let b = +prompt("Nhập chiều dài cạnh b: ")
+        let c = +prompt("Nhập chiều dài cạnh c: ")
+        if (isNaN(a) || isNaN(b) || isNaN(c) || a < 0 || b < 0 || c < 0 || a + b < c || c + b < a || a + c < b) {
+            alert(`Các cạnh với chiều dài vừa nhập ${a}, ${b}, ${c} không phải là tam giác`);
+        } else {
+            alert("Các cạnh vừa nhập là tam giác.")
+        }
+    }
+</script>
+
+<!--Bài 1: Chuyển từ độ C sang độ F. °C  x  9/5 + 32 = °F-->
+<!--Bài 2: Chuyển từ mét sang feet: ft =m * 3.2808-->
+<!--Bài 3: Tính diện tích hình vuông khi biết cạnh a.-->
+<!--Bài 4: Tính diện tích hình  chữ nhật khi biết 02 cạnh a, b.-->
+<!--Bài 5: Tính diện tích tam giác vuông khi biết 02 cạnh kề a, b.-->
+<!--Bài 6: Giải phương trình bậc 1.-->
+<!--Bài 7: Giải phương trình bậc 2.-->
+<!--Bài 8: Kiểm tra xem một số nhập vào có phải là tuổi của một người không. Một số nguyên là tuổi của một người khi nhỏ 120 và lơn hơn 0.-->
+<!--Bài 9: Kiểm tra xem 3 số thực (a,b,c) nhập vào có phải là cạnh của một tam giác. Điều kiện để a,b,c là cạnh của một tam giác là:-->
+<!--a,b,c > 0-->
+<!--a + b > c-->
+<!--b + c > a-->
+<!--a + c > b-->
+
+<!--Bài 10: Viết chương trình tính giá điện.-->
+<!--Bài 11: Viết chương trình tính thuế thu nhập cá nhân.-->
+<!--Bài 12: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.-->
+<!--Để hoàn thành bài thực hành, học viên cần:-->
